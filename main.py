@@ -26,6 +26,7 @@ def index():
         PLC_IP = request.form.get('ip')
         PLCTAG = request.form.get('tag')
         str = "IP Address:" + PLC_IP + " Tagname: " + PLCTAG
+        print("IP and tag changed to: " + PLC_IP + PLCTAG)
         return str, 200
 
 
