@@ -42,10 +42,6 @@ def config():
         return render_template('config.html'), 200
 
 
-
-
-
-
 @app.route('/result',methods=['GET'])
 def result():
     if request.method == 'GET':
