@@ -7,10 +7,7 @@ PLC_IP = "127.0.0.1"
 PLCTAG = "Reactors[0].Calcs"
 
 
-
 app = Flask(__name__)
-
-
 
 
 @app.route('/', methods=['GET', 'POST', 'DELETE'])
@@ -39,7 +36,8 @@ def config():
         return redirect('/')
     
     if request.method == 'GET':
-        return render_template('config.html'), 200
+        context={'ip': PLC_IP, 'tag': PLCTAG}
+        return render_template('config.html', **context), 200
 
 
 @app.route('/result',methods=['GET'])
@@ -49,7 +47,7 @@ def result():
             print("reading " + PLCTAG + " from " + PLC_IP)
             data = plc.read(PLCTAG)[0:2]
             jdata = json.dumps(data)
-            context = {'tag' : jdata }
+            context = {'payload' : jdata }
             return render_template('result.html',**context), 200
 
 

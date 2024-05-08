@@ -1,13 +1,14 @@
 <html charset="utf-8">
 <body>
     <script>
-
+        document.getElementById('tag').innerHTML = {{ tag }};
+    document.getElementById('ip').innerHTML = {{ip }}
     </script>
     <form>
         <label for="ip">IP:</label><br>
-        <input type="text" id="ip" name="ip"><br>
+        <input type="text" id="ip" name="ip">{{ip}}<br>
         <label for="tag">Tagname:</label><br>
-        <input type="text" id="tag" name="tag"><br/>
+        <input type="text" id="tag" name="tag">{{tag}}<br/>
         <button formmethod="post">Submit</button>
     </form>
 </body>
