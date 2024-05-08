@@ -1,11 +1,19 @@
 <html>
+<script type="text/javascript">
+let i = 0;
+var timer = setInterval(everySecondFunc, 500);
+function everySecondFunc(){
+	i++;
+	document.getElementById('pollid').innerHTML = "poll " + i;
+	document.getElementById('dynamo').src = "result";
+};
+</script>
 <body>
+	<a id="resultlink" href=".\result">Get Current Value</a>
     <h1>
-        Controller Data for tag {{tag}}
+        Controller IP:{{ip}} TAG: {{tag}}
     </h1>
-    <p>
-        {{tag}}
-    </p>
-    
+    <p id="pollid">Poll number</p>
+	<iframe id="dynamo" src="result" allowTransparency="true" background="transparent"/>
 </body>
 </html>
