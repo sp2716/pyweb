@@ -1,19 +1,26 @@
 <html>
 <script type="text/javascript">
 let i = 0;
-var timer = setInterval(everySecondFunc, 500);
-function everySecondFunc(){
-	i++;
-	document.getElementById('pollid').innerHTML = "poll " + i;
-	document.getElementById('dynamo').src = "result";
-};
+function loadDoc(){
+i++;
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function(){myFunction(this);}
+xhttp.open("GET", "result");
+xhttp.send();
+console.log(i);
+}
+function myFunction(data){
+	const res = data.responseText;
+	document.getElementById('result_data').innerHTML = res;
+}
+var timer = setInterval(loadDoc, 1000);
 </script>
 <body>
-	<a id="resultlink" href=".\result">Get Current Value</a>
     <h1>
         Controller IP:{{ip}} TAG: {{tag}}
     </h1>
     <p id="pollid">Poll number</p>
-	<iframe id="dynamo" src="result" allowTransparency="true" background="transparent"/>
+	<p id="result_data">result data</p>
+	<a id="resultlink" href=".\result">Get Current Value</a>
 </body>
 </html>
