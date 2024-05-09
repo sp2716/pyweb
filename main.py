@@ -30,21 +30,6 @@ def config():
         return render_template('config.html', **context), 200
 
 
-@app.route('/start', methods=['GET'])
-def start():
-    if request.method == 'GET':
-        global LATEST
-        try:
-            with LogixDriver(PLC_IP,) as plc:
-                    print("reading " + PLCTAG + " from " + PLC_IP)
-                    data = plc.read(PLCTAG)[0:2]
-                    LATEST = json.dumps(data)
-                    context={'ip': PLC_IP, 'tag': PLCTAG, 'payload': LATEST}
-        except:
-                context={'ip': PLC_IP, 'tag': PLCTAG, 'payload': 'comms error'}
-        return render_template("index.html", **context)
-
-
 @app.route('/result',methods=['GET'])
 def result():
     if request.method == 'GET':
@@ -52,8 +37,8 @@ def result():
         try:
             with LogixDriver(PLC_IP,) as plc:
                     print("reading " + PLCTAG + " from " + PLC_IP)
-                    data = plc.read(PLCTAG)[0:2]
-                    LATEST = json.dumps(data)
+                    data = plc.read(PLCTAG)[1:2]
+                    LATEST = json.dumps(data).replace("[","").replace("]","")
                     context = {'payload' : LATEST }
         except:
                 context = {'payload': 'comms error'}
