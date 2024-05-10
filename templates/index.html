@@ -1,20 +1,21 @@
 <html>
 <script type="text/javascript">
 let i = 0;
-function loadDoc(){
+const refresh_rate = 2000
+function refresh(){
 i++;
 const xhttp = new XMLHttpRequest();
-xhttp.onload = function(){myFunction(this);}
+xhttp.onload = function(){update(this);}
 xhttp.open("GET", "result");
 xhttp.send();
 console.log(i);
 }
-function myFunction(data){
+function update(data){
 	const res = data.responseText;
 	document.getElementById('result_data').innerHTML = res;
 	document.getElementById('pollid').innerHTML = i;
 }
-var timer = setInterval(loadDoc, 1000);
+var timer = setInterval(refresh, refresh_rate);
 </script>
 <body>
     <h1>
