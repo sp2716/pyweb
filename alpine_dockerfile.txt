@@ -1,0 +1,8 @@
+FROM alpine:latest 
+WORKDIR /app
+COPY . .
+RUN apk update
+RUN apk add nano
+RUN apk add build-base
+RUN gcc main.c -o main.out
+ENTRYPOINT ./main.out

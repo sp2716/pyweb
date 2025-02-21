@@ -1,6 +1,13 @@
 docker built -t image_name:revision . --no-cache // no cache forces rebuild //builds the image from the dockerfile in the directory
 docker run --name container_name -P -it image_name:revision //creates and runs the container based on image:revision with ephemeral port exposure
 docker port container_name //shows the exposed ports
+
+docker pull python:3 -it image_name //creates an empty image for use
+docker run --name python3_container -it python:3 /bin/bash //opens the empty container from docker pull and opens terminal for customization
+docker commit -m "message" container_name //image name?
+
+docker run --name alpine_container -it alpine:latest /bin/sh
+
 host.docker.internal //is the hostname for communication between containers (use to expose localhost of host machine)
 
 
