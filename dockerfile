@@ -1,6 +1,6 @@
 FROM python:3-slim
 EXPOSE 5000
-
+EXPOSE 44818
 WORKDIR /usr/src/app
 
 RUN apt-get update

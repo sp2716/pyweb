@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, send_file, render_template, redirect
 from pycomm3 import LogixDriver
 import json
 
-PLC_IP = "127.0.0.1"
+PLC_IP = "host.docker.internal" # if running in DOCKER use this, use localhost for FT ECHO Emulator, use real address (and some docker routing?) for external
 PLCTAG = "Reactors[0].Calcs"
 LATEST = "Never ran yet..."
 
