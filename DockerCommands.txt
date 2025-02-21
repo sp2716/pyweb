@@ -1,0 +1,6 @@
+docker built -t image_name:revision . --no-cache // no cache forces rebuild //builds the image from the dockerfile in the directory
+docker run --name container_name -P -it image_name:revision //creates and runs the container based on image:revision with ephemeral port exposure
+docker port container_name //shows the exposed ports
+host.docker.internal //is the hostname for communication between containers (use to expose localhost of host machine)
+
+
