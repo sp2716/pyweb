@@ -10,7 +10,24 @@ body {
   margin: 0 auto;
   width: 100%;
   border-radius: 12px;
+  border-width: 2px;
+  padding: 0;
+  border-color: rgb(42, 42, 131);
   background-color: rgb(99, 2, 99);
+}
+
+#option1 {
+
+  height: 50px;
+  padding: 0;
+  margin: 5px;
+  border-radius: 12px;
+}
+
+#option1:hover {
+  color: purple;
+  background-color: white;
+  pointer-events: fill;
 }
 
 #topmenu {
@@ -22,7 +39,7 @@ body {
   width: 100%;
   background-color: rgb(127, 38, 243);
   color: rgb(177, 23, 23);
-  border: 2px;
+  border: 12px;
   border-radius: 12px;
   height: 50px;
 }
