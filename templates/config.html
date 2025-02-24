@@ -1,15 +1,24 @@
-<html charset="utf-8">
+<!DOCTYPE html>
+<html lang="en" charset="utf-8">
+
+<head>
+    <title>Ethernet/IP Polling Tool</title>
+    <meta content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
 <body>
     <script>
         document.getElementById('tag').innerHTML = "{{ tag }}";
-    document.getElementById('ip').innerHTML = "{{ ip }}";
+        document.getElementById('ip').innerHTML = "{{ ip }}";
     </script>
     <form>
         <label for="ip">IP:</label><br>
         <input type="text" id="ip" name="ip">{{ip}}<br>
         <label for="tag">Tagname:</label><br>
-        <input type="text" id="tag" name="tag">{{tag}}<br/>
+        <input type="text" id="tag" name="tag">{{tag}}<br />
         <button formmethod="post">Submit</button>
     </form>
 </body>
+
 </html>

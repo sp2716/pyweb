@@ -4,7 +4,7 @@
 <head>
 	<title>Ethernet/IP Polling Tool</title>
 	<meta content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <script type="text/javascript">
@@ -40,10 +40,10 @@
 	</div>
 	<div id="topmenu">
 		<div id="configcontainer">
-			<a id="configlink" href=".\config.html">Configuration</a>
+			<a id="configlink" href="\config">Configuration</a>
 		</div>
 		<div id="resultlink">
-			<a href=".\result.html">Raw Value</a>
+			<a href="\result.html">Raw Value</a>
 		</div>
 		<div id="loginlink">
 			Login

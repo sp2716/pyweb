@@ -1,5 +1,5 @@
+
 from flask import Flask, jsonify, request, send_file, render_template, redirect
-from pycomm3 import LogixDriver
 import json
 
 PLC_IP = "host.docker.internal" # if running in DOCKER use this, use localhost for FT ECHO Emulator, use real address (and some docker routing?) for external
@@ -27,7 +27,7 @@ def config():
     
     if request.method == 'GET':
         context={'ip': PLC_IP, 'tag': PLCTAG}
-        return render_template('./config.html', **context), 200
+        return render_template('config.html', **context), 200
 
 
 @app.route('/result',methods=['GET'])
@@ -35,15 +35,13 @@ def result():
     if request.method == 'GET':
         global LATEST, PLCTAG, PLC_IP
         try:
-            with LogixDriver(PLC_IP) as plc:
-                    print("reading " + PLCTAG + " from " + PLC_IP)
-                    data = plc.read(PLCTAG)[1:2]
-                    LATEST = json.dumps(data).replace("[","").replace("]","")
-                    context = {'payload' : LATEST }
+            #perform the modbus calls here and stringify into "LATEST" variable
+            LATEST = "No Data Here yet"
+            context = {'payload' : LATEST }
         except:
                 context = {'payload': 'comms error'}
             
-        return render_template('./result.html',**context), 200
+        return render_template('result.html',**context), 200
 
 
 @app.route('/favicon.ico', methods=['GET'])
